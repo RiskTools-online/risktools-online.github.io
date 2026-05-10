@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background: #080A0E;
+    color: #E8EDF5;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  ::selection { background: #00D97E; color: #080A0E; }
+  input[type=number]::-webkit-outer-spin-button,
+  input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  input[type=number] { -moz-appearance: textfield; }
+}
+
+@layer components {
+  .tool-card {
+    @apply bg-surface-800 border border-border rounded-2xl overflow-hidden;
+    box-shadow: 0 1px 0 rgba(255,255,255,.04) inset, 0 4px 24px rgba(0,0,0,.4);
+  }
+  .input-field {
+    @apply w-full bg-surface-900 border border-border rounded-xl px-4 py-3
+           font-mono text-sm text-text-primary placeholder-text-muted
+           focus:outline-none focus:border-green focus:ring-1 focus:ring-green/20
+           transition-all duration-150;
+  }
+  .input-field:focus { box-shadow: 0 0 0 3px rgba(0,217,126,.08); }
+  .select-field {
+    @apply w-full bg-surface-900 border border-border rounded-xl px-4 py-3
+           font-body text-sm text-text-primary
+           focus:outline-none focus:border-green
+           transition-all duration-150 cursor-pointer appearance-none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238B9AB5' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+  }
+  .btn-primary {
+    @apply w-full bg-green hover:bg-green-dim text-surface-950 font-semibold text-sm
+           py-3 px-6 rounded-xl transition-all duration-150 active:scale-95 select-none;
+    font-family: 'IBM Plex Sans', sans-serif;
+  }
+  .btn-secondary {
+    @apply bg-surface-700 hover:bg-surface-600 border border-border text-text-secondary
+           hover:text-text-primary font-medium text-sm py-2.5 px-4 rounded-xl
+           transition-all duration-150 select-none;
+  }
+  .label-text {
+    @apply block text-xs font-medium text-text-secondary mb-1.5 uppercase tracking-widest;
+  }
+  .result-positive {
+    @apply font-mono text-green font-medium;
+  }
+  .result-negative {
+    @apply font-mono text-red font-medium;
+  }
+  .result-neutral {
+    @apply font-mono text-text-primary font-medium;
+  }
+  .result-box {
+    @apply bg-surface-900 border border-border-light rounded-xl p-4;
+  }
+  .result-label {
+    @apply text-xs text-text-muted uppercase tracking-widest mb-1;
+  }
+  .result-value {
+    @apply font-mono text-lg font-medium text-text-primary;
+  }
+  .page-title {
+    @apply font-display text-4xl md:text-5xl tracking-wide text-text-primary;
+    font-family: 'Bebas Neue', sans-serif;
+  }
+  .page-sub { @apply text-text-secondary text-sm leading-relaxed mt-2; }
+  .ad-slot {
+    @apply border border-dashed border-border rounded-xl flex items-center justify-center
+           text-text-muted text-xs tracking-widest select-none bg-surface-900/30;
+  }
+  .tooltip {
+    @apply text-xs text-text-muted mt-1 leading-relaxed;
+  }
+  .nav-link {
+    @apply text-text-secondary hover:text-text-primary text-xs font-medium
+           px-3 py-1.5 rounded-lg hover:bg-surface-700 transition-all duration-150;
+  }
+  .nav-link-active {
+    @apply text-green bg-green-muted text-xs font-medium px-3 py-1.5 rounded-lg;
+  }
+  .tag {
+    @apply inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-md;
+  }
+  .tag-green { @apply bg-green-muted text-green; }
+  .tag-red { @apply bg-red-muted text-red; }
+  .tag-amber { @apply bg-amber-muted text-amber; }
+}
+
+/* Stagger animations */
+.stagger > *:nth-child(1) { animation-delay: 0ms }
+.stagger > *:nth-child(2) { animation-delay: 60ms }
+.stagger > *:nth-child(3) { animation-delay: 120ms }
+.stagger > *:nth-child(4) { animation-delay: 180ms }
+.stagger > *:nth-child(5) { animation-delay: 240ms }
+.stagger > *:nth-child(6) { animation-delay: 300ms }
+
+/* Chart bars */
+.bar-fill { transition: width .6s cubic-bezier(.22,1,.36,1); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #080A0E; }
+::-webkit-scrollbar-thumb { background: #2A3347; border-radius: 2px; }
